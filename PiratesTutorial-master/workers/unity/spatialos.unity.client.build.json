@@ -18,7 +18,7 @@
             "--cachePath=.spatialos/schema_codegen_cache_std",
             "--output=.spatialos/generated/std",
             "--language=csharp",
-            "--input=../../build/dependencies/schema/WorkerSdkSchema"
+            "--input=../../build/dependencies/schema/standard_library"
           ]
         },
         {
@@ -41,7 +41,7 @@
             "--cachePath=.spatialos/schema_codegen_cache_json_std",
             "--output=.spatialos/json/std",
             "--language=ast_json",
-            "--input=../../build/dependencies/schema/WorkerSdkSchema"
+            "--input=../../build/dependencies/schema/standard_library"
           ]
         },
         {
@@ -62,11 +62,11 @@
           "arguments": [
             "invoke",
             "unity-mono",
-            ".spatialos/bin/CodeGenerator.exe",
+            ".spatialos/bin/UnityCodeGenerator.exe",
             "--",
             "--json-dir=.spatialos/json",
-            "--unity-component-output-dir=Assets/Improbable/Generated/Components",
-            "--unity-editor-component-output-dir=Assets/Improbable/Editor/Generated/Components",
+            "--unity-component-output-dir=Assets/Plugins/Improbable/Generated/Components",
+            "--unity-editor-component-output-dir=Assets/Plugins/Improbable/Editor/Generated/Components",
             "--reader-writer-output-dir=.spatialos/generated/readers_writers"
           ]
         },
@@ -76,16 +76,17 @@
           "arguments": [
             "invoke",
             "unity-csharp-compiler",
+            "--unity-reference=UnityEngine.dll",
             "--",
-            "-lib:Assets/Improbable/Sdk/Dll",
-            "-reference:protobuf-net.dll,Improbable.WorkerSdkCsharp.dll,Improbable.WorkerSdkCsharp.Framework.dll",
+            "-lib:Assets/Plugins/Improbable/Sdk/Dll",
+            "-reference:Improbable.WorkerSdkCsharp.dll,Improbable.WorkerSdkCsharp.Framework.dll",
             "-target:library",
             "-debug",
             "-unsafe",
             "-nowarn:1591",
             "-recurse:.spatialos/generated/*.cs",
-            "-out:Assets/Improbable/Sdk/Dll/Generated.Code.dll",
-            "-doc:Assets/Improbable/Sdk/Dll/Generated.Code.xml"
+            "-out:Assets/Plugins/Improbable/Sdk/Dll/Generated.Code.dll",
+            "-doc:Assets/Plugins/Improbable/Sdk/Dll/Generated.Code.xml"
           ]
         }
       ]
@@ -137,7 +138,7 @@
             "process_schema",
             "clean",
             ".spatialos",
-            "Assets/Improbable/Sdk/Dll/Generated.Code.dll"
+            "Assets/Plugins/Improbable/Sdk/Dll/Generated.Code.dll"
           ]
         }
       ]
